@@ -8,6 +8,10 @@ app.get('/user/:id', function(req, res){
   res.send('user ' + req.params.id + '/r/n function ' + req.query.q);
 });
 
+app.use(function(req, res, next) {
+  res.status(404).end();
+});
+
 app.listen(
   app.get('port'),
   function() {
