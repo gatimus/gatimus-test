@@ -1,6 +1,6 @@
 {
-  "name": "public",
-  "version": "0.0.0",
+  "name" : "gatimus-test",
+  "version" : "0.0.1",
   "authors": [
     "gatimus <william.g.lohan@gmail.com>"
   ],
