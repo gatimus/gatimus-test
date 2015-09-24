@@ -9,7 +9,7 @@ app.get('/user/:id', function(req, res){
 });
 
 app.use(function(req, res, next) {
-  res.status(404).end();
+  res.status(404).send();
 });
 
 app.listen(
