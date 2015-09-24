@@ -5,6 +5,9 @@
     "start": "node index.js",
     "postinstall": "bower install"
   },
+  "engines": {
+    "node": "4.x"
+  },
   "repository" : {
     "type" : "git",
     "url" : "https://github.com/gatimus/gatimus-test"
