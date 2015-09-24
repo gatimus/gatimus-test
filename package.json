@@ -13,6 +13,7 @@
     "url" : "https://github.com/gatimus/gatimus-test/issues"
   },
   "dependencies" : {
-    "express" : "4.x"
+    "express" : "4.x",
+    "bower" : "*"
   }
 }
