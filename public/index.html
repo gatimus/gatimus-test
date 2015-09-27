@@ -26,8 +26,10 @@
 
         socket.on('users', function(data){
 
+            $("#users").empty();
             for (var user in data) {
-                //$('<li/>').text(data[user].name).appendTo($('#users'));
+
+                $("#users").append($("<li/>").text(user + ": " +data[user].name));
                 console.log(data[user].name);
             };
 

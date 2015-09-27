@@ -23,8 +23,8 @@ io.on('connection',function (socket){
     socket.emit('message',{"alert" : socket.id});
 
     socket.on('disconnect', function () {
-        users.splice(socket.id,1);
-        console.log(users);
+        users[socket.id] = undefined;
+        //delete users[socket.id];
     });
 });
 
