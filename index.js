@@ -17,14 +17,38 @@ app.use(function(req, res) {
 
 var users = {};
 io.on('connection',function (socket){
-    users[socket.id] = {name: 'blank'};
+    socket.name = 'anonymous';
+    users[socket.id] = {name: socket.name};
     console.log(users);
+
     io.emit('users',users);
-    socket.emit('message',{"alert" : socket.id});
+
+
+
+    socket.on('message', function(data){
+        if(data.substring(0,1)  == '/'){
+            var cmd = data.substring(1, data.indexOf(' '));
+            var arg = data.substring(data.indexOf(' ')+1);
+            console.log(cmd+arg);
+            switch(cmd){
+                case 'name':
+                    socket.name = arg;
+                    users[socket.id].name = socket.name;
+                    break;
+                default:
+                    socket.emit('message', {id: 'server', name: 'server', message: 'bad command'})
+            }
+        } else {
+            //socket.broadcast.emit('message',{id: socket.id, name: socket.name, message: data});
+            io.emit('message',{id: socket.id, name: socket.name, message: data});
+        }
+
+    });
+
 
     socket.on('disconnect', function () {
-        users[socket.id] = undefined;
-        //delete users[socket.id];
+        //users[socket.id] = undefined;
+        delete users[socket.id];
     });
 });
 
